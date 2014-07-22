@@ -24,11 +24,11 @@
           <div class="col-lg-2">
               <form role="form" id="signup-form">
                   <div class="form-group">
-                      <div class="input-group">
-                          <input type="text" class="form-control" placeholder="Username">
-                          <button type="button" class="btn btn-default btn-sm btn-block">
-                              Sign up!
-                          </button>
+                      <div id="register_group" class="input-group">
+                          <input id="email_address" type="text" class="form-control" placeholder="Email Address">
+                          <button id="signup_button" type="button" class="btn btn-default btn-sm btn-block">
+                              Register Email address
+                          </button> 
                       </div>
                       <div class="input-group">
                           <label for="loginSecret">Login Secret</label>
@@ -37,6 +37,9 @@
                               This secret is emailed to you after
                               registering.
                           </span>
+                          <button id="secret_button" type="button" class="btn btn-default btn-sm btn-block">
+                              Submit Secret
+                          </button> 
                       </div>
                   </div>
               </form>
@@ -46,5 +49,6 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
+  <script src="js/oab-ui.js"></script>
   </body>
 </html>
