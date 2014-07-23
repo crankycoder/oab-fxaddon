@@ -1,10 +1,10 @@
-$(function() {
-  $("a[href='/wiki/Digital_object_identifier']").next('a.external').each(function() {
-    console.log($(this), $(this).text());
-    $(this).after(
-      $('<span>').addClass('oab-signalling-doi')
-        .text('foobar')
-    );
+$(document).ready(function(){
+    itemsManager = new ItemsManager();
 
+  $("a[href='/wiki/Digital_object_identifier']").next('a.external').each(function() {
+    var doi = $(this).text();
+    console.log("DOI: ", doi);
+    itemsManager.add(doi, $(this));
   });
+
 });
