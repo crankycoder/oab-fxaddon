@@ -1,6 +1,7 @@
 var Auth = function() {
   var _this = this;
-  var BASE_OA_URL = "https://openaccessbutton.org/apiv2/";
+  //var BASE_OA_URL = "https://www.openaccessbutton.org/apiv2/";
+  var BASE_OA_URL = "http://localhost:8000/apiv2/";
   var STORAGE_KEYS = {
     email: 'auth.email',
     session_token: 'auth.session_token',
@@ -70,6 +71,7 @@ var Auth = function() {
     );
   };
 
+
   _this.signup = function(_email) {
     _this.isConfirmed = false;
     _this.email = _email;
@@ -77,13 +79,13 @@ var Auth = function() {
     _this.session_token = guid();
     localStorage.setItem(STORAGE_KEYS.session_token, _this.session_token);
 
+    var post_data = JSON.stringify({email: _this.email, token: _this.session_token});
+
+    // $('#auth-form').serialize()
     $.ajax({
       type: "POST",
       url: BASE_OA_URL + 'register/',
-      data: {
-        email: _this.email,
-        session_token: _this.session_token
-      },
+      data : post_data
     }).success(function(data) {
       // nothing to do
     }).error(function(data) {
@@ -92,6 +94,7 @@ var Auth = function() {
     });
     updateUI();
   };
+
 
   _this._checkSessionConfirmation = function() {
    $.ajax({
